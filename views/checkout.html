@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | J & L Fashion Collection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+
+  <main class="container my-5">
+    <h2 class="mb-4 text-center">Checkout</h2>
+    
+    <div class="row">
+      <!-- User Form -->
+      <div class="col-lg-7 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100">
+          <h4 class="mb-4 fw-bold">Shipping Details</h4>
+          <form id="checkout-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Shipping Address</label>
+                <input type="text" class="form-control" placeholder="1234 Main St" required>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label">Country</label>
+                <select class="form-select" required>
+                  <option value="">Choose...</option>
+                  <option>United States</option>
+                  <option>Philippines</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">City/State</label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Zip</label>
+                <input type="text" class="form-control" required>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="mb-3 fw-bold">Payment</h4>
+            <div class="my-3">
+              <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                <label class="form-check-label" for="credit">Credit card / Debit card</label>
+              </div>
+              <div class="form-check">
+                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+
+            <button class="w-100 btn btn-primary-custom btn-lg mt-4" type="submit">Place Order</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Order Summary (Yellow Basket) -->
+      <div class="col-lg-5 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="cart-header">
+            Yellow Basket
+          </div>
+          <div class="card-body p-4" id="cart-summary">
+            <!-- Items injected here -->
+          </div>
+          <div class="card-footer bg-white border-0 p-4 pt-0">
+            <div class="d-flex justify-content-between">
+              <h5 class="fw-bold m-0">Total (USD)</h5>
+              <h5 class="fw-bold m-0" id="cart-total">$0.00</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      await app.init(false);
+      renderCart();
+
+      document.getElementById('checkout-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const selectedCheckboxes = document.querySelectorAll('.item-checkbox:checked');
+        if (selectedCheckboxes.length === 0) {
+          app.showToast("Please select at least one item to checkout!", "⚠️");
+          return;
+        }
+
+        const selectedIds = Array.from(selectedCheckboxes).map(cb => parseInt(cb.dataset.id));
+        const selectedItems = cart.items.filter(item => selectedIds.includes(item.id));
+
+        // Simulate checkout for selected items only
+        app.updateStocks(selectedItems);
+        
+        // Mock Order created
+        const orderId = "ORD-" + Math.floor(Math.random() * 1000000);
+        localStorage.setItem("lastOrder", orderId);
+
+        // Remove only selected items from cart
+        cart.removeItems(selectedIds);
+        
+        // Redirect to order status
+        window.location.href = "order-status.html";
+      });
+    });
+
+    function updateSelectedTotal() {
+      const selectedCheckboxes = document.querySelectorAll('.item-checkbox:checked');
+      let total = 0;
+      selectedCheckboxes.forEach(cb => {
+        const id = parseInt(cb.dataset.id);
+        const item = cart.items.find(i => i.id === id);
+        if (item) {
+          total += (item.price * item.quantity);
+        }
+      });
+      document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+    }
+
+    function toggleSelectAll(checked) {
+      const checkboxes = document.querySelectorAll('.item-checkbox');
+      checkboxes.forEach(cb => cb.checked = checked);
+      updateSelectedTotal();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-summary');
+      if (cart.items.length === 0) {
+        container.innerHTML = `<p class="text-center my-3">Your Yellow Basket is empty.</p>`;
+        document.getElementById('cart-total').textContent = `$0.00`;
+        return;
+      }
+
+      let html = `
+        <div class="select-all-container">
+          <input type="checkbox" id="select-all" class="form-check-input me-2" checked onchange="toggleSelectAll(this.checked)">
+          <label for="select-all" class="mb-0">SELECT ALL ITEMS</label>
+        </div>
+      `;
+      
+      cart.items.forEach(item => {
+        html += `
+          <div class="cart-item d-flex align-items-center">
+            <input type="checkbox" class="item-checkbox cart-checkbox" data-id="${item.id}" checked onchange="updateSelectedTotal()">
+            <div class="d-flex align-items-center flex-grow-1">
+              <img src="${item.image}" alt="${item.name}" class="rounded me-3" style="width: 60px; height: 80px; object-fit: cover;">
+              <div class="flex-grow-1">
+                <h6 class="mb-0 fw-bold">${item.name}</h6>
+                <div class="small text-muted">Price: $${item.price.toFixed(2)}</div>
+                <div class="small text-muted">Qty: ${item.quantity}</div>
+              </div>
+              <div class="text-end">
+                <span class="fw-bold">$${(item.price * item.quantity).toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+      updateSelectedTotal();
+    }
+  </script>
+</body>
+</html>
