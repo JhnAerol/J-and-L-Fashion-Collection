@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body>
 
   <div id="navbar-container"></div>
 
   <main class="container my-5">
     <h2 class="mb-4 text-center">Checkout</h2>
-    
+
     <div class="row">
       <!-- User Form -->
       <div class="col-lg-7 mb-4">
@@ -107,7 +109,7 @@
 
       document.getElementById('checkout-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const selectedCheckboxes = document.querySelectorAll('.item-checkbox:checked');
         if (selectedCheckboxes.length === 0) {
           app.showToast("Please select at least one item to checkout!", "⚠️");
@@ -119,14 +121,14 @@
 
         // Simulate checkout for selected items only
         app.updateStocks(selectedItems);
-        
+
         // Mock Order created
         const orderId = "ORD-" + Math.floor(Math.random() * 1000000);
         localStorage.setItem("lastOrder", orderId);
 
         // Remove only selected items from cart
         cart.removeItems(selectedIds);
-        
+
         // Redirect to order status
         window.location.href = "order-status.html";
       });
@@ -165,7 +167,7 @@
           <label for="select-all" class="mb-0">SELECT ALL ITEMS</label>
         </div>
       `;
-      
+
       cart.items.forEach(item => {
         html += `
           <div class="cart-item d-flex align-items-center">
@@ -189,4 +191,5 @@
     }
   </script>
 </body>
+
 </html>

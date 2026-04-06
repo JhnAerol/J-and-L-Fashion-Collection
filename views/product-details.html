@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body>
 
   <div id="navbar-container"></div>
@@ -18,7 +20,7 @@
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    
+
     <div id="product-content" class="row d-none">
       <div class="col-md-6 mb-4">
         <div class="bg-white p-3 rounded shadow-sm text-center">
@@ -36,14 +38,14 @@
 
         <h1 id="detail-name" class="fw-bold mb-2"></h1>
         <p class="text-muted mb-2"><span id="detail-brand"></span> | <span id="detail-category"></span></p>
-        
+
         <div class="d-flex align-items-center mb-3">
           <h3 class="fw-bold me-3 mb-0" id="detail-price"></h3>
           <span class="text-muted text-decoration-line-through" id="detail-oldPrice"></span>
         </div>
 
         <div id="detail-stock-badge" class="stock-badge"></div>
-        
+
         <p id="detail-description" class="mb-4"></p>
 
         <h5 class="fw-bold">Product Details</h5>
@@ -74,29 +76,32 @@
               <p class="small mb-0">Absolutely love this! The quality is amazing and fits perfectly.</p>
             </div>
           </div>
-          
+
           <form id="feedback-form" class="mt-4 p-4 border rounded bg-white shadow-sm">
             <h6 class="fw-bold mb-3">Leave a Review</h6>
-            
+
             <div class="mb-3">
               <label class="form-label small fw-bold">Your Name</label>
-              <input type="text" id="review-name" class="form-control form-control-sm" placeholder="e.g. Alex Smith" required>
+              <input type="text" id="review-name" class="form-control form-control-sm" placeholder="e.g. Alex Smith"
+                required>
             </div>
 
             <div class="mb-3">
               <label class="form-label small fw-bold">Rating</label>
               <div class="star-rating">
-                <input type="radio" id="star5" name="rating" value="5" required/><label for="star5" title="5 stars">★</label>
-                <input type="radio" id="star4" name="rating" value="4"/><label for="star4" title="4 stars">★</label>
-                <input type="radio" id="star3" name="rating" value="3"/><label for="star3" title="3 stars">★</label>
-                <input type="radio" id="star2" name="rating" value="2"/><label for="star2" title="2 stars">★</label>
-                <input type="radio" id="star1" name="rating" value="1"/><label for="star1" title="1 star">★</label>
+                <input type="radio" id="star5" name="rating" value="5" required /><label for="star5"
+                  title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
               </div>
             </div>
 
             <div class="mb-3">
               <label class="form-label small fw-bold">Your Feedback</label>
-              <textarea id="review-text" class="form-control form-control-sm" rows="3" placeholder="What did you think of this product?" required></textarea>
+              <textarea id="review-text" class="form-control form-control-sm" rows="3"
+                placeholder="What did you think of this product?" required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary-custom btn-sm w-100">Submit Review</button>
@@ -114,13 +119,13 @@
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       await app.init(false);
-      
+
       const urlParams = new URLSearchParams(window.location.search);
       const productId = parseInt(urlParams.get('id'));
 
-      if(productId) {
+      if (productId) {
         const product = app.products.find(p => p.id === productId);
-        if(product) {
+        if (product) {
           document.getElementById("loading").classList.add("d-none");
           document.getElementById("product-content").classList.remove("d-none");
 
@@ -164,7 +169,7 @@
           const feedbackForm = document.getElementById("feedback-form");
           feedbackForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            
+
             const name = document.getElementById("review-name").value;
             const text = document.getElementById("review-text").value;
             const rating = feedbackForm.querySelector('input[name="rating"]:checked').value;
@@ -183,10 +188,10 @@
 
             const reviewsList = document.getElementById("reviews-list");
             reviewsList.insertAdjacentHTML('afterbegin', reviewHtml);
-            
+
             app.showToast("Your review has been submitted!", "✍️");
             feedbackForm.reset();
-            
+
             // Optionally update the count visually
             product.reviewCount++;
             document.getElementById("detail-rating").textContent = `${product.rating} / 5 (Based on ${product.reviewCount} reviews)`;
@@ -195,9 +200,10 @@
           document.getElementById("loading").innerHTML = "<h3>Product not found</h3>";
         }
       } else {
-         document.getElementById("loading").innerHTML = "<h3>No Product ID specified</h3>";
+        document.getElementById("loading").innerHTML = "<h3>No Product ID specified</h3>";
       }
     });
   </script>
 </body>
+
 </html>

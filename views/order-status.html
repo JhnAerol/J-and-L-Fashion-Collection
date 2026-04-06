@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body>
 
   <div id="navbar-container"></div>
@@ -15,29 +17,33 @@
   <main class="container my-5 text-center flex-grow-1 d-flex flex-column justify-content-center">
     <div id="status-content">
       <div class="mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="var(--primary-color)" class="bi bi-box-seam" viewBox="0 0 16 16">
-          <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.84l-6.5-2.6v7.922zM2.519 3.1 7.5 5.09v7.923l-.117-.046z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="var(--primary-color)"
+          class="bi bi-box-seam" viewBox="0 0 16 16">
+          <path
+            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.84l-6.5-2.6v7.922zM2.519 3.1 7.5 5.09v7.923l-.117-.046z" />
         </svg>
       </div>
 
       <h2 class="fw-bold mb-3" id="order-title">Checking your order...</h2>
-      
+
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card shadow-sm border-0 p-4">
             <h5 class="text-muted mb-4" id="order-id"></h5>
-            
+
             <div class="progress mb-3" style="height: 20px;">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" id="progress-bar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar"
+                id="progress-bar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
             </div>
-            
+
             <p class="fw-bold" id="order-status-text">Processing</p>
-            
-            <p class="small text-muted mt-4">We will notify you when your order ships. Thank you for shopping with J & L Fashion Collection.</p>
+
+            <p class="small text-muted mt-4">We will notify you when your order ships. Thank you for shopping with J & L
+              Fashion Collection.</p>
           </div>
         </div>
       </div>
-      
+
       <div class="mt-5">
         <a href="../index.html" class="btn btn-outline-dark">Return to Home</a>
       </div>
@@ -52,12 +58,12 @@
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       await app.init(false);
-      
+
       const lastOrder = localStorage.getItem("lastOrder");
       if (lastOrder) {
         document.getElementById("order-title").textContent = "Order Placed Successfully!";
         document.getElementById("order-id").textContent = `Order Number: ${lastOrder}`;
-        
+
         const bar = document.getElementById("progress-bar");
         const statusText = document.getElementById("order-status-text");
 
@@ -84,7 +90,7 @@
           // Step 4: Reset state after the user sees the 'Shipped' status (at 9s)
           setTimeout(() => {
             localStorage.removeItem("lastOrder");
-            
+
             // Fade out the current content and show 'No active order'
             const content = document.getElementById("status-content");
             content.style.transition = "opacity 0.8s ease";
@@ -110,4 +116,5 @@
     });
   </script>
 </body>
+
 </html>

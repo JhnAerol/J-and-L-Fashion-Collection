@@ -48,11 +48,11 @@ const cart = {
   updateQuantity(productId, quantity) {
     const item = this.items.find(i => i.id === productId);
     if (item) {
-      if(quantity > item.stock) {
+      if (quantity > item.stock) {
         app.showToast(`Only ${item.stock} items left in stock.`, '⚠️');
         return;
       }
-      if(quantity < 1) {
+      if (quantity < 1) {
         this.removeItem(productId);
         return;
       }
@@ -83,7 +83,7 @@ const cart = {
     const badges = document.querySelectorAll('.cart-badge');
     badges.forEach(badge => {
       badge.textContent = this.getCount();
-      if(this.getCount() === 0){
+      if (this.getCount() === 0) {
         badge.style.display = 'none';
       } else {
         badge.style.display = 'inline-block';

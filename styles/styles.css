@@ -1,11 +1,20 @@
 :root {
   --primary-color: #000000;
   --secondary-color: #ffffff;
-  --accent-color: #ffd700; /* Yellow for the Yellow Basket */
+  --accent-color: #ffd700;
+  /* Yellow for the Yellow Basket */
   --text-dark: #333333;
   --text-light: #f8f9fa;
   --bg-light: #fafafa;
   --bg-gray: #f1f1f1;
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -16,10 +25,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
 main {
-  flex: 1;
+  flex: 1 0 auto;
+  /* Ensure it grows but doesn't shrink to zero height */
 }
 
 /* Navbar */
@@ -84,7 +95,7 @@ main {
   border: 2.5px solid var(--accent-color);
   padding: 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Toast Notification */
@@ -101,7 +112,7 @@ main {
   padding: 1rem 1.5rem;
   border-radius: 12px;
   margin-bottom: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -144,7 +155,7 @@ main {
 .btn-primary-custom:hover {
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
@@ -152,7 +163,7 @@ main {
   position: relative;
   height: 80vh;
   min-height: 500px;
-  background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+  background: url('../resources/hero_bg.png') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,8 +172,11 @@ main {
 
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .hero-content {
@@ -189,6 +203,7 @@ main {
   border: none;
   background-color: transparent;
   transition: transform 0.3s ease;
+  animation: fadeIn 0.8s ease backwards;
 }
 
 .product-card:hover {
@@ -296,7 +311,7 @@ footer {
   display: flex;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: background 0.3s ease;
 }
 
@@ -335,7 +350,7 @@ footer {
   align-items: center;
   padding: 12px 20px;
   background: var(--bg-gray);
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 1px;
@@ -353,7 +368,7 @@ footer {
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   font-size: 1.2rem;
 }
 
@@ -361,7 +376,7 @@ footer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Star Rating UI */
@@ -384,8 +399,8 @@ footer {
 }
 
 .star-rating label:hover,
-.star-rating label:hover ~ label,
-.star-rating input:checked ~ label {
+.star-rating label:hover~label,
+.star-rating input:checked~label {
   color: #ffc107;
 }
 
@@ -395,6 +410,153 @@ footer {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Uniqlo-Style Mobile Redesign */
+@media (max-width: 576px) {
+
+  /* 2-Column Grid */
+  .col-6-mobile {
+    flex: 0 0 auto;
+    width: 50% !important;
+    padding: 2px !important;
+    /* Minimal padding for stitching look */
+  }
+
+  .container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    max-width: 100% !important;
+  }
+
+  .product-card {
+    box-shadow: none !important;
+    border: none !important;
+    border-bottom: 1px solid #eee !important;
+    border-right: 1px solid #eee !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    height: 100%;
+  }
+
+  .product-img-wrapper {
+    aspect-ratio: 1/1 !important;
+    /* Square for more impact and perfect alignment */
+    border-radius: 0 !important;
+    overflow: hidden;
+  }
+
+  .product-img-wrapper img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .product-title {
+    font-size: 1.1rem !important;
+    /* Larger text for mobile */
+    font-weight: 700 !important;
+    margin-bottom: 6px !important;
+    text-align: left !important;
+    height: auto;
+    /* Allow more lines for readability */
+    max-height: 3.5rem;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+
+  .product-price {
+    font-size: 1.2rem !important;
+    text-align: left !important;
+    font-weight: 800;
+    color: #e60012 !important;
+  }
+
+  .product-info {
+    padding: 15px 8px !important;
+    text-align: left !important;
+  }
+
+  .product-brand {
+    font-size: 0.85rem !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 4px;
+    color: #555;
+  }
+
+  .text-muted.small {
+    font-size: 0.85rem !important;
+  }
+
+  /* Horizontal Category Scroll */
+  .category-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    gap: 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .category-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-pill {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+
+  .category-pill.active {
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 700;
+  }
+
+  /* Floating Bottom Nav */
+  .bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .bottom-nav-item {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    padding: 5px 15px;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+
+  .bottom-nav-item:active {
+    background: rgba(0, 0, 0, 0.05);
+  }
 }
