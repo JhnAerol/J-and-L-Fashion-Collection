@@ -17,10 +17,9 @@ const cart = {
 
   addItem(product, quantity = 1) {
     const existingItem = this.items.find(item => item.id === product.id);
-    // Check stock before adding
     let currentQty = existingItem ? existingItem.quantity : 0;
     if (currentQty + quantity > product.stock) {
-      app.showToast(`Only ${product.stock} items left in stock!`, '⚠️');
+      app.showToast(`Only ${product.stock} items left in stock!`, '<i class="fa-solid fa-triangle-exclamation"></i>');
       return;
     }
 
@@ -37,7 +36,7 @@ const cart = {
       });
     }
     this.save();
-    app.showToast(`${product.name} added to your Yellow Basket!`, '✨');
+    app.showToast(`${product.name} added to your Yellow Basket!`, '<i class="fa-solid fa-check-circle"></i>');
   },
 
   removeItem(productId) {
@@ -49,7 +48,7 @@ const cart = {
     const item = this.items.find(i => i.id === productId);
     if (item) {
       if (quantity > item.stock) {
-        app.showToast(`Only ${item.stock} items left in stock.`, '⚠️');
+        app.showToast(`Only ${item.stock} items left in stock.`, '<i class="fa-solid fa-triangle-exclamation"></i>');
         return;
       }
       if (quantity < 1) {
@@ -92,5 +91,4 @@ const cart = {
   }
 };
 
-// Initialize cart on load
 cart.init();

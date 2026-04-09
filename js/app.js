@@ -1,10 +1,8 @@
 const app = {
-  isRoot: false,
   products: [],
   stockKey: 'j_l_fashion_stocks',
 
-  async init(isRoot = false) {
-    this.isRoot = isRoot;
+  async init() {
     this.initToastContainer();
     this.renderNavbar();
     this.renderFooter();
@@ -21,7 +19,7 @@ const app = {
     }
   },
 
-  showToast(message, icon = '🛍️') {
+  showToast(message, icon = '<i class="fa-solid fa-shopping-bag"></i>') {
     const container = document.getElementById('toast-container');
     if (!container) return;
 
@@ -34,55 +32,47 @@ const app = {
 
     container.appendChild(toast);
 
-    // Force reflow for animation
     setTimeout(() => toast.classList.add('show'), 10);
 
-    // Remove toast after duration
     setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => toast.remove(), 400);
     }, 3000);
   },
 
-  basePath() {
-    return this.isRoot ? '.' : '..';
-  },
-
   renderNavbar() {
     const navbarHTML = `
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand me-auto me-lg-4" href="${this.basePath()}/index.html">J & L</a>
-          
-          <!-- Desktop Menu & Desktop Cart -->
+          <a class="navbar-brand me-auto me-lg-4" href="index.html">J & L</a>
+
           <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/views/products.html">Products</a>
+                <a class="nav-link" href="products.html">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/views/suppliers.html">Suppliers</a>
+                <a class="nav-link" href="suppliers.html">Suppliers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/views/about.html">About Us</a>
+                <a class="nav-link" href="about.html">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/views/contact.html">Contact</a>
+                <a class="nav-link" href="contact.html">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${this.basePath()}/views/order-status.html">Order Status</a>
+                <a class="nav-link" href="order-status.html">Order Status</a>
               </li>
             </ul>
           </div>
 
-          <!-- Quick Access Icons (Right Aligned) -->
           <div class="d-flex align-items-center gap-2 order-2 order-lg-3 ms-lg-auto">
-             <a href="${this.basePath()}/views/checkout.html" class="nav-link p-2 position-relative">
+             <a href="checkout.html" class="nav-link p-2 position-relative">
                 <div class="cart-icon">
-                  <span class="fs-4">🛍️</span>
+                  <span class="fs-4"><i class="fa-solid fa-shopping-bag"></i></span>
                   <span class="cart-badge" id="navbar-cart-badge" style="display:none;">0</span>
                 </div>
              </a>
@@ -99,16 +89,15 @@ const app = {
   },
 
   renderBottomNav() {
-    // Only show on mobile
     if (window.innerWidth > 576) return;
 
     if (document.getElementById('bottom-nav')) return;
 
     const navHTML = `
       <div id="bottom-nav" class="bottom-nav">
-        <a href="${this.basePath()}/index.html" class="bottom-nav-item">🏠</a>
-        <a href="${this.basePath()}/views/products.html" class="bottom-nav-item">🔍</a>
-        <a href="${this.basePath()}/views/about.html" class="bottom-nav-item">👤</a>
+        <a href="index.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i></a>
+        <a href="products.html" class="bottom-nav-item"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="about.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i></a>
       </div>
     `;
     document.body.insertAdjacentHTML('beforeend', navHTML);
@@ -120,9 +109,9 @@ const app = {
         <div class="container text-center">
           <p class="mb-2">&copy; ${new Date().getFullYear()} J & L Fashion Collection</p>
           <div>
-            <a href="${this.basePath()}/views/about.html" class="footer-link mx-2">About</a>
-            <a href="${this.basePath()}/views/contact.html" class="footer-link mx-2">Contact</a>
-            <a href="${this.basePath()}/views/suppliers.html" class="footer-link mx-2">Suppliers</a>
+            <a href="about.html" class="footer-link mx-2">About</a>
+            <a href="contact.html" class="footer-link mx-2">Contact</a>
+            <a href="suppliers.html" class="footer-link mx-2">Suppliers</a>
           </div>
         </div>
       </footer>
@@ -133,14 +122,18 @@ const app = {
 
   async loadProducts() {
     try {
-      const response = await fetch(`${this.basePath()}/data/products.json`);
-      let allProducts = await response.json();
+      let allProducts;
 
-      // Check local storage for updated stocks
+      if (window.productsData) {
+        allProducts = window.productsData;
+      } else {
+        const response = await fetch('../data/products.json');
+        allProducts = await response.json();
+      }
+
       const savedStocks = localStorage.getItem(this.stockKey);
       let localStocks = savedStocks ? JSON.parse(savedStocks) : {};
 
-      // Merge local stocks into data
       this.products = allProducts.map(p => {
         if (localStocks[p.id] !== undefined) {
           p.stock = localStocks[p.id];
@@ -169,13 +162,12 @@ const app = {
     let stockText = product.stock > 0 ? `${product.stock} in stock` : 'Out of Stock';
     let stockClass = product.stock > 0 ? 'text-success' : 'text-danger';
 
-    // Truncate name slightly less to keep details visible
     let displayName = product.name.length > 40 ? product.name.substring(0, 37) + "..." : product.name;
 
     return `
       <div class="col-6 col-lg-3">
         <div class="card product-card h-100 position-relative">
-          <a href="${this.basePath()}/views/product-details.html?id=${product.id}" class="text-decoration-none text-dark">
+          <a href="product-details.html?id=${product.id}" class="text-decoration-none text-dark">
             <div class="product-img-wrapper">
               ${product.isFeatured ? '<span class="product-badge">Featured</span>' : ''}
               <img src="${product.images[0]}" alt="${product.name}" class="card-img-top">
@@ -183,7 +175,7 @@ const app = {
             <div class="product-info">
               <p class="product-brand mb-0">${product.brand}</p>
               <h5 class="product-title">${displayName}</h5>
-              
+
               <div class="d-flex align-items-center mb-1">
                 ${product.oldPrice ? `<small class="text-muted text-decoration-line-through me-2">$${product.oldPrice.toFixed(2)}</small>` : ''}
                 <span class="product-price fw-bold me-2">$${product.price.toFixed(2)}</span>

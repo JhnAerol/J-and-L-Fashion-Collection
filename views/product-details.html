@@ -7,6 +7,7 @@
   <title>Product Details | J & L Fashion Collection</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
@@ -57,7 +58,6 @@
           <button id="add-btn" class="btn btn-primary-custom flex-grow-1">Add to Cart</button>
         </div>
 
-        <!-- Review & Feedback Section -->
         <div class="mt-5 pt-4 border-top">
           <h5 class="fw-bold">Reviews & Feedback</h5>
           <div class="mb-3 d-flex align-items-center">
@@ -66,7 +66,6 @@
           </div>
 
           <div id="reviews-list">
-            <!-- Mock initial review -->
             <div class="card mb-3 border-0 bg-light p-3">
               <div class="d-flex justify-content-between">
                 <span class="fw-bold">Jane Doe</span>
@@ -114,11 +113,12 @@
   <div id="footer-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../data/products.js"></script>
   <script src="../js/cart.js"></script>
   <script src="../js/app.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
-      await app.init(false);
+      await app.init();
 
       const urlParams = new URLSearchParams(window.location.search);
       const productId = parseInt(urlParams.get('id'));
@@ -165,7 +165,6 @@
             cart.addItem(product, qty);
           });
 
-          // Handle Feedback Submission
           const feedbackForm = document.getElementById("feedback-form");
           feedbackForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -189,10 +188,9 @@
             const reviewsList = document.getElementById("reviews-list");
             reviewsList.insertAdjacentHTML('afterbegin', reviewHtml);
 
-            app.showToast("Your review has been submitted!", "✍️");
+            app.showToast("Your review has been submitted!", '<i class="fa-solid fa-pen-nib"></i>');
             feedbackForm.reset();
 
-            // Optionally update the count visually
             product.reviewCount++;
             document.getElementById("detail-rating").textContent = `${product.rating} / 5 (Based on ${product.reviewCount} reviews)`;
           });

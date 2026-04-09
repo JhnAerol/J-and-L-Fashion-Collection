@@ -1,0 +1,306 @@
+window.productsData = [
+    {
+        "id": 1,
+        "name": "White Hotel Printed Crew Neck",
+        "images": [
+            "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 85.0,
+        "oldPrice": 110.0,
+        "details": ["Color: White", "Fit: Regular", "Material: 100% Organic Cotton", "Made in Paris"],
+        "description": "A minimalist white crew neck shirt featuring an elegant hotel print design. Perfect for casual yet refined everyday wear.",
+        "brand": "Valémoire Atelier",
+        "category": "Apparel",
+        "stock": 120,
+        "rating": 4.5,
+        "reviewCount": 42,
+        "isFeatured": false,
+        "tags": ["apparel", "shirt", "white", "casual"],
+        "reviews": []
+    },
+    {
+        "id": 2,
+        "name": "Signature T-Shirt Collection",
+        "images": [
+            "https://images.unsplash.com/photo-1716951910901-3f595611cf3d?q=80&w=763&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 220.0,
+        "oldPrice": 250.0,
+        "details": ["Set of 4 T-shirts", "Colors: Various Neutrals", "Fit: Relaxed", "Material: Pima Cotton"],
+        "description": "A curated collection of four premium t-shirts in versatile neutral tones, offering the perfect blend of comfort and effortless style.",
+        "brand": "Valémoire Atelier",
+        "category": "Apparel",
+        "stock": 55,
+        "rating": 4.8,
+        "reviewCount": 89,
+        "isFeatured": true,
+        "tags": ["apparel", "t-shirts", "collection", "basics"],
+        "reviews": []
+    },
+    {
+        "id": 3,
+        "name": "Classic Brown Long Sleeve",
+        "images": [
+            "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 125.0,
+        "oldPrice": null,
+        "details": ["Color: Earth Brown", "Fit: Tailored", "Material: Cotton Blend", "Care: Machine Wash"],
+        "description": "A staple brown long sleeve shirt, perfect for layering or wearing on its own. Crafted for timeless elegance and everyday utility.",
+        "brand": "Valémoire Atelier",
+        "category": "Apparel",
+        "stock": 70,
+        "rating": 4.6,
+        "reviewCount": 34,
+        "isFeatured": false,
+        "tags": ["apparel", "long sleeve", "brown", "essentials"],
+        "reviews": []
+    },
+    {
+        "id": 4,
+        "name": "Indigo Blue Denim Jacket",
+        "images": [
+            "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?q=80&w=669&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 340.0,
+        "oldPrice": 380.0,
+        "details": ["Color: Indigo Blue", "Fit: Classic", "Material: 100% Raw Denim", "Hardware: Antique Brass"],
+        "description": "A timeless blue denim button-up jacket, featuring durable raw denim construction and elegant detailing. An essential outerwear piece.",
+        "brand": "Valémoire Atelier",
+        "category": "Outerwear",
+        "stock": 35,
+        "rating": 4.9,
+        "reviewCount": 112,
+        "isFeatured": true,
+        "tags": ["jacket", "denim", "blue", "outerwear", "bestseller"],
+        "reviews": []
+    },
+    {
+        "id": 5,
+        "name": "Riviera Straw Hat",
+        "images": [
+            "https://images.unsplash.com/photo-1745284504844-7979176dc29b?q=80&w=664&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 150.0,
+        "oldPrice": null,
+        "details": ["Color: Natural / Black Band", "Material: Woven Straw", "Brim: Wide", "UV Protection"],
+        "description": "A chic straw hat featuring a sophisticated black band. Ideal for sunny getaways or elevated summer ensembles.",
+        "brand": "Valémoire Atelier",
+        "category": "Accessories",
+        "stock": 40,
+        "rating": 4.7,
+        "reviewCount": 28,
+        "isFeatured": false,
+        "tags": ["accessories", "hat", "straw hat", "summer"],
+        "reviews": []
+    },
+    {
+        "id": 6,
+        "name": "Onyx Designer Sunglasses",
+        "images": [
+            "https://images.unsplash.com/photo-1762706334838-ea8425b43116?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 420.0,
+        "oldPrice": 480.0,
+        "details": ["Frame Color: Tortoise Shell", "Lens: Polarized", "UV Protection: 100%", "Includes Leather Case"],
+        "description": "Sleek and boldly designed sunglasses that provide the ultimate blend of modern aesthetics and essential eye protection.",
+        "brand": "Valémoire Atelier",
+        "category": "Accessories",
+        "stock": 25,
+        "rating": 4.9,
+        "reviewCount": 67,
+        "isFeatured": true,
+        "tags": ["accessories", "sunglasses", "eyewear"],
+        "reviews": []
+    },
+    {
+        "id": 7,
+        "name": "Embroidered Linen Ensemble",
+        "images": [
+            "https://images.unsplash.com/photo-1774294548013-8041e0dcc6dd?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 850.0,
+        "oldPrice": null,
+        "details": ["Color: White", "Hand-Embroidered Detailing", "Material: Premium Linen", "Includes Shirt and Pants"],
+        "description": "An exquisite white embroidered shirt paired with tailored pants. Handcrafted for a sophisticated, breezy silhouette.",
+        "brand": "Aurevian Couture",
+        "category": "Couture",
+        "stock": 15,
+        "rating": 5.0,
+        "reviewCount": 14,
+        "isFeatured": true,
+        "tags": ["couture", "apparel", "linen", "embroidered", "exclusive"],
+        "reviews": []
+    },
+    {
+        "id": 8,
+        "name": "Intellectual Optics Frame",
+        "images": [
+            "https://images.unsplash.com/photo-1666778845215-2ed716b5ce73?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 300.0,
+        "oldPrice": null,
+        "details": ["Frame Color: Classic Black", "Style: Round", "Material: Acetate", "Anti-Reflective Coating Ready"],
+        "description": "A refined optical frame that exudes intellect and style. Designed for those who appreciate understated luxury.",
+        "brand": "Aurevian Couture",
+        "category": "Accessories",
+        "stock": 50,
+        "rating": 4.6,
+        "reviewCount": 38,
+        "isFeatured": false,
+        "tags": ["accessories", "glasses", "optics"],
+        "reviews": []
+    },
+    {
+        "id": 9,
+        "name": "Noir Tailored Suit",
+        "images": [
+            "https://images.unsplash.com/photo-1644483878392-2d7e7c00eb3f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 1200.0,
+        "oldPrice": 1400.0,
+        "details": ["Color: Deep Black", "Fit: Slim", "Material: Wool Silk Blend", "Dry Clean Only"],
+        "description": "A striking black-on-black tailored outfit that offers unparalleled modern tailoring, designed for the discerning gentleman.",
+        "brand": "Aurevian Couture",
+        "category": "Couture",
+        "stock": 20,
+        "rating": 4.8,
+        "reviewCount": 51,
+        "isFeatured": true,
+        "tags": ["couture", "suit", "black", "menswear"],
+        "reviews": []
+    },
+    {
+        "id": 10,
+        "name": "Caramel Leather Handbag",
+        "images": [
+            "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?q=80&w=763&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 890.0,
+        "oldPrice": 950.0,
+        "details": ["Color: Caramel Brown", "Material: Full Grain Leather", "Hardware: Gold Plated", "Dimensions: 12\" x 8\" x 4\""],
+        "description": "A luxurious brown leather handbag featuring impeccable craftsmanship and spacious interior. A timeless accessory for elegant daily use.",
+        "brand": "Aurevian Couture",
+        "category": "Handbags",
+        "stock": 30,
+        "rating": 4.9,
+        "reviewCount": 105,
+        "isFeatured": true,
+        "tags": ["handbags", "leather", "accessories", "premium"],
+        "reviews": []
+    },
+    {
+        "id": 11,
+        "name": "Midnight Silk Gown",
+        "images": [
+            "https://images.unsplash.com/photo-1704775990248-4c1c1a276b4f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 2400.0,
+        "oldPrice": null,
+        "details": ["Color: Midnight Black", "Material: 100% Mulberry Silk", "Includes Gold Detail Chain", "Tailor-made ready"],
+        "description": "An unforgettable dark dress adorned with an integrated gold necklace. Fluid, sensual, and impeccably draped for black-tie elegance.",
+        "brand": "Aurevian Couture",
+        "category": "Couture",
+        "stock": 8,
+        "rating": 5.0,
+        "reviewCount": 22,
+        "isFeatured": true,
+        "tags": ["couture", "dress", "evening", "silk", "luxury"],
+        "reviews": []
+    },
+    {
+        "id": 12,
+        "name": "Aurevian Signature Dress",
+        "images": [
+            "https://images.unsplash.com/photo-1620777887680-2f19493935a5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 1500.0,
+        "oldPrice": 1800.0,
+        "details": ["Color: Classic White / Dark", "Material: Silk Crêpe", "Silhouette: A-Line", "Dry Clean Only"],
+        "description": "A signature dress from Aurevian Couture, designed to grace any occasion with unmatched sophistication and feminine allure.",
+        "brand": "Aurevian Couture",
+        "category": "Couture",
+        "stock": 10,
+        "rating": 4.7,
+        "reviewCount": 19,
+        "isFeatured": false,
+        "tags": ["couture", "dress", "elegant"],
+        "reviews": []
+    },
+    {
+        "id": 13,
+        "name": "Élarion Diamond Necklace",
+        "images": [
+            "https://plus.unsplash.com/premium_photo-1681276169876-1ce2e33361a8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 15000.0,
+        "oldPrice": null,
+        "details": ["Stone: VS1 Diamonds", "Metal: 18k White Gold", "Length: 18\"", "Carat: 4.5 ctw"],
+        "description": "An breathtaking diamond necklace that catches the light from every angle. A true masterpiece of fine jewelry.",
+        "brand": "Élarion Collection",
+        "category": "Jewelry",
+        "stock": 3,
+        "rating": 5.0,
+        "reviewCount": 5,
+        "isFeatured": true,
+        "tags": ["jewelry", "necklace", "diamonds", "luxury", "masterpiece"],
+        "reviews": []
+    },
+    {
+        "id": 14,
+        "name": "Botanical Floral Pendant",
+        "images": [
+            "https://plus.unsplash.com/premium_photo-1681276170008-76db5a27dee9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 4200.0,
+        "oldPrice": 4800.0,
+        "details": ["Stone: Pink Sapphires and Diamonds", "Metal: 18k Rose Gold", "Chain: Adjustable 16-18\"", "Nature-inspired design"],
+        "description": "A delicate necklace featuring a floral motif, meticulously crafted with precious stones to celebrate nature's beauty.",
+        "brand": "Élarion Collection",
+        "category": "Jewelry",
+        "stock": 12,
+        "rating": 4.9,
+        "reviewCount": 27,
+        "isFeatured": false,
+        "tags": ["jewelry", "necklace", "pendant", "floral"],
+        "reviews": []
+    },
+    {
+        "id": 15,
+        "name": "Pearl & Diamond Drop Earrings",
+        "images": [
+            "https://plus.unsplash.com/premium_photo-1681276169903-83b87f1cbf19?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 3800.0,
+        "oldPrice": null,
+        "details": ["Pearl: South Sea Cultured", "Stone: Pave Diamonds", "Metal: Platinum", "Style: Drop"],
+        "description": "Elegant drop earrings pairing flawless white pearls with brilliant diamond accents. A timeless addition to any collection.",
+        "brand": "Élarion Collection",
+        "category": "Jewelry",
+        "stock": 18,
+        "rating": 4.8,
+        "reviewCount": 42,
+        "isFeatured": true,
+        "tags": ["jewelry", "earrings", "pearl", "diamonds"],
+        "reviews": []
+    },
+    {
+        "id": 16,
+        "name": "Celestial Jewelry Set",
+        "images": [
+            "https://plus.unsplash.com/premium_photo-1681276169830-7bd1678b0c15?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
+        "price": 22000.0,
+        "oldPrice": 25000.0,
+        "details": ["Includes: Necklace, Bracelet, Ring", "Stones: Mixed Gemstones", "Metal: 18k Yellow Gold", "Bespoke Collection"],
+        "description": "A magnificent collection of fine jewelry displayed with pristine elegance. Masterpieces designed to become heirlooms.",
+        "brand": "Élarion Collection",
+        "category": "Jewelry",
+        "stock": 2,
+        "rating": 5.0,
+        "reviewCount": 8,
+        "isFeatured": true,
+        "tags": ["jewelry", "set", "gemstones", "exclusive"],
+        "reviews": []
+    }
+];

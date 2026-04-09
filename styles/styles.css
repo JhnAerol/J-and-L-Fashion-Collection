@@ -2,7 +2,6 @@
   --primary-color: #000000;
   --secondary-color: #ffffff;
   --accent-color: #ffd700;
-  /* Yellow for the Yellow Basket */
   --text-dark: #333333;
   --text-light: #f8f9fa;
   --bg-light: #fafafa;
@@ -30,10 +29,8 @@ body {
 
 main {
   flex: 1 0 auto;
-  /* Ensure it grows but doesn't shrink to zero height */
 }
 
-/* Navbar */
 .navbar {
   background-color: var(--secondary-color);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -98,7 +95,6 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Toast Notification */
 .toast-container {
   position: fixed;
   top: 20px;
@@ -138,7 +134,6 @@ main {
   font-size: 1rem;
 }
 
-/* Buttons */
 .btn-primary-custom {
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -158,7 +153,6 @@ main {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero Section */
 .hero-section {
   position: relative;
   height: 80vh;
@@ -198,7 +192,6 @@ main {
   margin-bottom: 30px;
 }
 
-/* Product Cards */
 .product-card {
   border: none;
   background-color: transparent;
@@ -257,7 +250,6 @@ main {
   font-weight: 700;
 }
 
-/* Footer */
 footer {
   background-color: var(--primary-color);
   color: var(--text-light);
@@ -275,7 +267,6 @@ footer {
   color: var(--secondary-color);
 }
 
-/* Details Page */
 .product-detail-img {
   width: 100%;
   height: auto;
@@ -294,7 +285,6 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Cart / Yellow Basket */
 .cart-header {
   background-color: var(--accent-color);
   color: var(--primary-color);
@@ -326,7 +316,6 @@ footer {
   margin-right: 15px;
 }
 
-/* About & Contact */
 .founders-img {
   width: 150px;
   height: 150px;
@@ -336,7 +325,6 @@ footer {
   background-color: #ddd;
 }
 
-/* Custom Checkbox Styling */
 .cart-checkbox {
   width: 20px;
   height: 20px;
@@ -356,7 +344,6 @@ footer {
   letter-spacing: 1px;
 }
 
-/* Social Media Icons */
 .social-icon-link {
   display: flex;
   align-items: center;
@@ -379,7 +366,6 @@ footer {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Star Rating UI */
 .star-rating {
   display: flex;
   flex-direction: row-reverse;
@@ -421,15 +407,12 @@ footer {
   }
 }
 
-/* Uniqlo-Style Mobile Redesign */
 @media (max-width: 576px) {
 
-  /* 2-Column Grid */
   .col-6-mobile {
     flex: 0 0 auto;
     width: 50% !important;
     padding: 2px !important;
-    /* Minimal padding for stitching look */
   }
 
   .container {
@@ -450,7 +433,6 @@ footer {
 
   .product-img-wrapper {
     aspect-ratio: 1/1 !important;
-    /* Square for more impact and perfect alignment */
     border-radius: 0 !important;
     overflow: hidden;
   }
@@ -463,12 +445,10 @@ footer {
 
   .product-title {
     font-size: 1.1rem !important;
-    /* Larger text for mobile */
     font-weight: 700 !important;
     margin-bottom: 6px !important;
     text-align: left !important;
     height: auto;
-    /* Allow more lines for readability */
     max-height: 3.5rem;
     overflow: hidden;
     line-height: 1.2;
@@ -499,7 +479,6 @@ footer {
     font-size: 0.85rem !important;
   }
 
-  /* Horizontal Category Scroll */
   .category-scroll-container {
     display: flex;
     overflow-x: auto;
@@ -529,7 +508,6 @@ footer {
     font-weight: 700;
   }
 
-  /* Floating Bottom Nav */
   .bottom-nav {
     position: fixed;
     bottom: 20px;

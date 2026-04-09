@@ -1,4 +1,3 @@
-// filters.js
 document.addEventListener("DOMContentLoaded", () => {
   const categoryFilter = document.getElementById("category-filter");
   const brandFilter = document.getElementById("brand-filter");
